@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('post', 'PostController');
 
 Route::group(['prefix' => 'post', 'middleware' => 'auth'], function () {
+
    Route::get('index', 'PostController@index')->name('post.index');
    Route::get('create', 'PostController@create')->name('post.create');
    Route::post('store', 'PostController@store')->name('post.store');
@@ -42,4 +43,12 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth'], function () {
    Route::post('cookie', 'PostController@cookie')->name('post.cookie');
    Route::get('d_session', 'PostController@d_session')->name('post.d_session');
    Route::get('d_cookie', 'PostController@d_cookie')->name('post.d_cookie');
+
+});
+
+// ajax
+Route::group(['prefix' => 'testajax', 'middleware' => 'auth'], function() {
+  Route::get('index', 'testAjaxController@index')
+    ->name('testajax_index');
+
 });
