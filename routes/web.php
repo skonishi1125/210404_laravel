@@ -50,5 +50,9 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'testajax', 'middleware' => 'auth'], function() {
   Route::get('index', 'testAjaxController@index')
     ->name('testajax_index');
+  Route::get('first_fnc', 'testAjaxController@first_fnc')
+    ->name('testajax_first_fnc');
+  Route::post('second_fnc', 'testAjaxController@secondFnc')
+    ->name('testajax_second_fnc');
 
 });
