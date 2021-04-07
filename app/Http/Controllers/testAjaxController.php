@@ -21,11 +21,13 @@ class testAjaxController extends Controller
       return response()->json(json_encode($data));
     }
 
-    public function secondFnc(Request $val) {
-      // $data = $val; 送っても空白になってしまった
+    public function secondFnc(Request $request) {
+      // ajaxで送られてきた値は、Request $変数['名前']で指定できる
       $data = [
-        'val' => $val,
+        'val' => $request['val'],
+        'num' => $request['num'],
         'string' => 'お元気ですか？',
+        'array' => [1,2,3,4,5,11,22,33,44],
       ];
 
       return response()->json(json_encode($data));

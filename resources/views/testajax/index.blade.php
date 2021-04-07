@@ -77,6 +77,7 @@
     $('#secondBtn').click(function() {
       console.log('second btn push');
       const greet = 'こんにちは';
+      const number = 100;
       $.ajax({
         type: 'POST',
         // コントローラ名:secondFncだが、route名はsecond_fncなのでパスのsecond_fncを指定する
@@ -84,19 +85,26 @@
         dataType: 'json',
         data: {
           val: greet,
+          num: number,
         }
       }).done(function(results) {
         console.log('処理は走りました');
         var html = '';
-        // コントローラから送られてきたjsonをjsで使えるように変換すること
+        // コントローラから送られてきたjsonをjsで使えるように変換する
         var result = JSON.parse(results);
           console.dir('results : ' + results);
           console.dir('result : ' + result);
-          html += '<p>送った値は' + result['val'] + 'です。</p>';
+          html += '<p>送ったgreetは' + result['val'] + 'です。</p>';
+          html += '<p>送ったnumberは' + result['num'] + 'です。</p>';
           html += '<p>追加で受け取った値は「' + result['string'] + '」です。</p>';
-          valだけ受け取れていないので受け取り方を調べる
-
         $('#second-space').html(html);
+
+        // 配列を返す $.each(渡す配列, function(index, 仮変数)) indexは添字
+        console.log('----- 配列 -----');
+        console.log('[index]: arr の形で返ってくる');
+        $.each(result['array'], function(index, arr) {
+          console.log('[' + index + ']: ' + arr);
+        });
 
       }).fail(function(jqXHR, textStatus, errorThrown) { //失敗時の処理
         alert('ファイルの取得に失敗しました。');
