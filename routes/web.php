@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('post', 'PostController');
 
 Route::group(['prefix' => 'post', 'middleware' => 'auth'], function () {
+
    Route::get('index', 'PostController@index')->name('post.index');
    Route::get('create', 'PostController@create')->name('post.create');
    Route::post('store', 'PostController@store')->name('post.store');
@@ -42,4 +43,23 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth'], function () {
    Route::post('cookie', 'PostController@cookie')->name('post.cookie');
    Route::get('d_session', 'PostController@d_session')->name('post.d_session');
    Route::get('d_cookie', 'PostController@d_cookie')->name('post.d_cookie');
+
 });
+
+// ajax
+Route::group(['prefix' => 'testajax', 'middleware' => 'auth'], function() {
+  Route::get('index', 'testAjaxController@index')
+    ->name('testajax_index');
+  Route::get('first_fnc', 'testAjaxController@first_fnc')
+    ->name('testajax_first_fnc');
+  Route::post('second_fnc', 'testAjaxController@secondFnc')
+    ->name('testajax_second_fnc');
+});
+
+// Book
+Route::get('book/list','BookController@list');
+Route::get('book/plain','BookController@plain');
+Route::get('book/header','BookController@header');
+Route::get('book/outJson','BookController@outJson');
+Route::get('book/outCsv','BookController@outCsv');
+Route::get('book/lesson/two','BookController@lesson2');
