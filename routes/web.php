@@ -54,5 +54,12 @@ Route::group(['prefix' => 'testajax', 'middleware' => 'auth'], function() {
     ->name('testajax_first_fnc');
   Route::post('second_fnc', 'testAjaxController@secondFnc')
     ->name('testajax_second_fnc');
-
 });
+
+// Book
+Route::get('book/list','BookController@list');
+Route::get('book/plain','BookController@plain');
+Route::get('book/header','BookController@header');
+Route::get('book/outJson','BookController@outJson');
+Route::get('book/outCsv','BookController@outCsv');
+Route::get('book/lesson/two','BookController@lesson2');
