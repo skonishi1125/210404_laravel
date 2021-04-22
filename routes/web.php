@@ -63,3 +63,6 @@ Route::get('book/header','BookController@header');
 Route::get('book/outJson','BookController@outJson');
 Route::get('book/outCsv','BookController@outCsv');
 Route::get('book/lesson/two','BookController@lesson2');
+
+// Mail
+Route::get('mail/log', 'MailController@log');

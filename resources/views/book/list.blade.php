@@ -12,6 +12,9 @@
         <div class="card-body">
           <h2>h2タイトル</h2>
           @foreach ($records as $record)
+          {{
+            dd($record)
+          }}
             <p>{{ $record->title }}</p>
           @endforeach
         </div>
