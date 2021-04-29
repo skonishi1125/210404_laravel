@@ -63,7 +63,7 @@ class dbPracticeController extends Controller
       $toArray = Book::all()->toArray();
       // dd($bookall,$toArray);
 
-      // スコープ
+      // スコープ scope
       $queryScope = \App\Models\Testpost::popular()->get();
       $getPopularPosts = \App\Models\TestPost::getPopularPost();
 
@@ -134,7 +134,15 @@ class dbPracticeController extends Controller
 
       $select = DB::select('SELECT * FROM books');
       $take = Book::take(3)->get();
-      dd($select, $take);
+      $where = Book::where('price','<=',2500)->get();
+
+      $q = Book::query()->where('id','1');
+      $b = $q->get();
+
+      $value = Book::where('id',5)->value('isbn');
+      $sql = $q->toSql();
+
+      dd($select, $take, $where, $q, $b, $value, $sql);
 
 
 
