@@ -71,3 +71,15 @@ Route::get('mail/log', 'MailController@log');
 Route::get('dbpractice/facade', 'dbPracticeController@facade');
 Route::get('dbpractice/eloquent', 'dbPracticeController@Eloquent');
 Route::get('dbpractice/queryBuilder', 'dbPracticeController@queryBuilder');
+
+// ルーティング練習
+Route::get('foo', function() {
+    return 'Routing Test';
+});
+
+Route::match(['get','post'], 'foo/match', function() {
+ return 'Match test';
+});
+
+Route::get('route/route','RouteTestController@route');
+Route::get('route/param/{id}','RouteTestController@param');
