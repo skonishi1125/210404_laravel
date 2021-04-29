@@ -76,10 +76,23 @@ Route::get('dbpractice/queryBuilder', 'dbPracticeController@queryBuilder');
 Route::get('foo', function() {
     return 'Routing Test';
 });
-
 Route::match(['get','post'], 'foo/match', function() {
  return 'Match test';
 });
 
-Route::get('route/route','RouteTestController@route');
-Route::get('route/param/{id}','RouteTestController@param');
+Route::prefix('route')->group(function() {
+  Route::get('route','RouteTestController@route');
+  Route::get('param/{id?}','RouteTestController@param')
+    ->where(['id' => '[0-2]']);
+  Route::get('keywd/{keywds?}','RouteTestController@keywd')
+    ->where("keywds", '.*');
+  Route::namespace('Test')->group(function() {
+    Route::get('ns','NameSpaceTestController@ns');
+  });
+  Route::redirect('/','route', 301);
+  Route::fallback(function() {
+    return ('存在しないページです。');
+  });
+});
+
+Route::resource('crud','CrudController');

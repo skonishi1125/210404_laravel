@@ -11,8 +11,11 @@
 
         <div class="card-body">
           <h2>ルーティング</h2>
+          <a href="http://localhost/route/param">route/paramへと飛ぶ</a>
           <a href="http://localhost/route/param/1">パラメータ1を渡す</a>
           <a href="http://localhost/route/param/2">パラメータ2を渡す</a>
+          <a href="http://localhost/route/param/3">パラメータ3を渡す</a>
+          <a href="http://localhost/route/param/5">パラメータ5を渡す</a>
         </div>
 
       </div>
