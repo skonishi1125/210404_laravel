@@ -66,3 +66,8 @@ Route::get('book/lesson/two','BookController@lesson2');
 
 // Mail
 Route::get('mail/log', 'MailController@log');
+
+// dbPracticeController
+Route::get('dbpractice/facade', 'dbPracticeController@facade');
+Route::get('dbpractice/eloquent', 'dbPracticeController@Eloquent');
+Route::get('dbpractice/queryBuilder', 'dbPracticeController@queryBuilder');
